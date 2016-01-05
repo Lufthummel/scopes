@@ -56,4 +56,4 @@ Vector:
 
 *&copy; Epistmex 2015-2016*
  
-![Epistemex](http://i.imgur.com/YxO8CtB.png)
+![Epistemex](http://i.imgur.com/wZSsyt8.png)
