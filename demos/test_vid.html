@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="(C) Epistemex">
+
+	<title>Scopes video demo</title>
+	<style>
+		body {background:#333; color:#fff; font:14px sans-serif}
+		video {width:640px;height:auto}
+		canvas {
+			background:#000;
+			}
+		div, canvas, video {
+			display:inline-block;
+			vertical-align: top;
+			}
+		input:disabled {opacity:0.5}
+		.top {
+			display:block;
+			margin:12px 0;
+			}
+	</style>
+</head>
+<body>
+
+<div class="top">
+	<div>
+		<label>Intensity:<br><input id="int" type="range" min="1" max="100" value="33"></label>
+	</div>
+	<div>
+		<label>Scope type:<br><select id="type">
+			<option selected value="histogram">Histogram</option>
+			<option value="waveform">Waveform</option>
+			<option value="parade">RGB Parade</option>
+			<option value="vector">Vector</option>
+		</select></label>
+	</div>
+	<div>
+		<label>Channels:<br><select id="channel">
+			<option selected value="RGB">RGB</option>
+			<option value="L">Luminance</option>
+			<option value="RGBL">RGB+Luma</option>
+			<option value="R">Red</option>
+			<option value="G">Green</option>
+			<option value="B">Blue</option>
+		</select></label>
+	</div>
+	<div>
+		<label>Quality:<br><select id="quality">
+			<option value="8">Superfast</option>
+			<option selected value="4">Fast</option>
+			<option value="2">Good</option>
+			<option value="1">Best</option>
+		</select></label>
+	</div>
+	<div>
+		<label>Luma:<br><select id="luma">
+			<option selected value="601">BT.601</option>
+			<option value="709">BT.709</option>
+			<option value="linear">Linear</option>
+		</select></label>
+	</div>
+</div>
+
+<canvas id="target" width="600" height="360"></canvas>
+<video id="src" src="test_lq.mp4" onloadeddata="start()" muted autoplay loop controls></video>
+
+<script src="sliderfeedback.min.js"></script>
+<script src="../src/core.js"></script>
+<script src="../src/histogram.js"></script>
+<script src="../src/waveform.js"></script>
+<script src="../src/parade.js"></script>
+<script src="../src/vector.js"></script>
+<script src="../src/graticule.js"></script>
+<script>
+
+var scope;
+
+function start() {
+
+	var src = document.getElementById("src"),
+	    target = document.getElementById("target"),
+	    int = document.getElementById("int"),
+	    type = document.getElementById("type"),
+	    quality = document.getElementById("quality"),
+	    channel = document.getElementById("channel"),
+	    luma = document.getElementById("luma");
+
+    scope = new Scope(src, target, {
+	    show: "RGB",
+	    scopeType: "histogram",
+	    quality: 2,
+	    intensity: +int.value,
+	    scopeAlpha: false,
+	    lumaType: "601"
+    });
+
+	(function draw() {
+		if (!src.paused) scope.update();
+		requestAnimationFrame(draw)
+	})();
+
+	src.ontimeupdate = function() {
+		if (src.paused) scope.update();
+	};
+
+	int.onchange = function() {
+		scope.intensity(+this.value);
+		if (src.paused) scope.update();
+	};
+
+	type.onchange = function() {
+		switch(type.value) {
+			case "histogram":
+				target.width = 640;
+				target.height = 360;
+				break;
+			case "vector":
+				target.width =
+				target.height = 512;
+				break;
+			default:
+				target.width = 640;
+				target.height = 256;
+				break;
+		}
+
+		scope.scopeType(this.value);
+		if (src.paused) scope.update();
+
+		var s = scope.support();
+		quality.disabled = !s.quality;
+		luma.disabled = !s.L;
+
+	};
+
+	channel.onchange = function() {
+		scope.show(this.value);
+		if (src.paused) scope.update();
+	};
+
+	quality.onchange = function() {
+		scope.quality(+this.value);
+		if (src.paused) scope.update();
+	};
+
+	luma.onchange = function() {
+		scope.lumaType(this.value);
+		if (src.paused) scope.update();
+	};
+}
+
+</script>
+</body>
+</html>
