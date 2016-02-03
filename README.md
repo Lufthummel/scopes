@@ -18,7 +18,10 @@ The scope package includes:
 - RGB Parade (RGB channels)
 - Vector (HSL projection)
 
-Features
+It is assumed you are familiar with the concepts of video scopes.
+
+
+Features (alpha/preview)
 --------
 
 - Real-time
@@ -27,8 +30,16 @@ Features
 - Configurable (size, look etc.)
 
 
+Known issues
+------------
+
+- Vector scope does not work with Chrome (use Firefox for now).
+
+
 Snapshots
 ---------
+
+**See also video on [YouTube](https://www.youtube.com/watch?v=Bjj3DLH-93I)**.
 
 Histogram RGB:
 
@@ -49,9 +60,6 @@ RGB Parade:
 Vector:
 
 ![Vector](http://i.imgur.com/Nx3AeqT.png)
-
-
-**TBA**
 
 
 *&copy; Epistmex 2015-2016*
