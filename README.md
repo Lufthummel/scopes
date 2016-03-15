@@ -29,6 +29,13 @@ Features (alpha/preview)
 - BT.601 and BT.709 luma conversion
 - Configurable (size, look etc.)
 
+Demo
+----
+
+**[Online demo can be found here.](http://epistemex.github.io/scopes/test_vid.html)**
+
+We recommend testing in Firefox (see known issues with Chrome below)
+
 
 Known issues
 ------------
