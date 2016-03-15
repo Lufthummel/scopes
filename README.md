@@ -33,14 +33,20 @@ Features (alpha/preview)
 Known issues
 ------------
 
+- Video won't loop properly in Chrome (use Firefox for now).
 - Vector scope does not work with Chrome (use Firefox for now).
 
 
-LICENSE
--------
+Dual License
+------------
 
-Currently not determined. May be used for preview purposes only for now.<br>
-Need it right now? Contact us!
+For personal non-commercial use a GPLv2 license is provided. The term "personal", as used in this License, refers to non-business use.
+The term "non-commercial", as used in this License, means academic or other scholarly research which (a) is not undertaken for profit,
+or (b) is not intended to produce works, services, or data for commercial use, or (c) is neither conducted, nor funded, by a person or
+an entity engaged in the commercial use, application or exploitation of works similar to the Software.
+
+The Software is available to commercial and business use through a separate license which must be purchased from Epistemex. This
+commercial license allows for closed source use. [Contact us](mailto:github@epistemex.com) for details.
 
 
 Snapshots

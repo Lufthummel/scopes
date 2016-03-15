@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-	<meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="(C) Epistemex">
 
@@ -69,7 +69,6 @@
 <canvas id="target" width="600" height="360"></canvas>
 <video id="src" src="test_lq.mp4" onloadeddata="start()" muted autoplay loop controls></video>
 
-<script src="sliderfeedback.min.js"></script>
 <script src="../src/core.js"></script>
 <script src="../src/histogram.js"></script>
 <script src="../src/waveform.js"></script>
@@ -108,7 +107,7 @@ function start() {
 		if (src.paused) scope.update();
 	};
 
-	int.onchange = function() {
+	int.oninput  = function() {
 		scope.intensity(+this.value);
 		if (src.paused) scope.update();
 	};
