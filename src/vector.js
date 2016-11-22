@@ -38,8 +38,9 @@ Scope._vector = function(data, options) {
 		for(y = 0; y < dia; y++) {
 			for(x = 0; x < dia; x++) {
 				p = y * dia + x;
-				v = Math.min(255, arr[p] * options.intensity);
-				data[p] = (v << 24) | 0xbbbb77;
+				v = Math.min(255, arr[p] * options.intensity)|0;
+				//data[p] = (v << 24) | 0x00bbbb77; // BUG in webkit, doesn't pre-multiply the alpha channel for us when context option alpha=false..
+				data[p] = 0xff000000 | v << 16 | v << 8 | v;
 			}
 		}
 
@@ -98,6 +99,7 @@ Scope._vector = function(data, options) {
 
 	function createTmp(sz) {
 		var c = document.createElement("canvas"),
+			//ctx = c.getContext("2d"); //, {alpha: false}); BUG in webkit: does not pre-multiply the alpha channel in data-image objects
 			ctx = c.getContext("2d", {alpha: false});
 		c.width = c.height = sz;
 
