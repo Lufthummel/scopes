@@ -1,6 +1,9 @@
 Change log for Scopes
 ---------------------
 
+0.1.1 ALPHA
+FIX: Workaround for bug in Chrome not pre-multiplying idata when context uses alpha=false.
+
 0.1.0 ALPHA
 NEW: Initial release
 

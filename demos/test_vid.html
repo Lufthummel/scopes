@@ -9,7 +9,7 @@
 
 	<title>Scopes video demo</title>
 	<style>
-		body {background:#333; color:#fff; font:14px sans-serif}
+		body {background:#222; color:#fff; font:14px sans-serif}
 		video {width:640px;height:auto}
 		canvas {
 			background:#000;
@@ -29,7 +29,7 @@
 
 <div class="top">
 	<div>
-		<label>Intensity:<br><input id="int" type="range" min="1" max="100" value="33"></label>
+		<label>Intensity:<br><input id="int" type="range" min="1" max="50" value="16"></label>
 	</div>
 	<div>
 		<label>Scope type:<br><select id="type">
@@ -59,15 +59,15 @@
 	</div>
 	<div>
 		<label>Luma:<br><select id="luma">
-			<option selected value="601">BT.601</option>
-			<option value="709">BT.709</option>
+			<option selected value="709">BT.709</option>
+			<option value="601">BT.601</option>
 			<option value="linear">Linear</option>
 		</select></label>
 	</div>
 </div>
 
-<canvas id="target" width="600" height="360"></canvas>
 <video id="src" src="test_lq.mp4" onloadeddata="start()" muted autoplay loop controls></video>
+<canvas id="target" width="600" height="360"></canvas>
 
 <script src="../src/core.js"></script>
 <script src="../src/histogram.js"></script>
@@ -87,7 +87,8 @@ function start() {
 	    type = document.getElementById("type"),
 	    quality = document.getElementById("quality"),
 	    channel = document.getElementById("channel"),
-	    luma = document.getElementById("luma");
+	    luma = document.getElementById("luma"),
+		toggle = false;
 
     scope = new Scope(src, target, {
 	    show: "RGB",
@@ -95,11 +96,12 @@ function start() {
 	    quality: 2,
 	    intensity: +int.value,
 	    scopeAlpha: false,
-	    lumaType: "601"
+	    lumaType: "709"
     });
 
 	(function draw() {
-		if (!src.paused) scope.update();
+		toggle = !toggle;
+		if (!src.paused && toggle) scope.update();
 		requestAnimationFrame(draw)
 	})();
 
@@ -134,7 +136,6 @@ function start() {
 		var s = scope.support();
 		quality.disabled = !s.quality;
 		luma.disabled = !s.L;
-
 	};
 
 	channel.onchange = function() {

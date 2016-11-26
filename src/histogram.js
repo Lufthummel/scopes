@@ -71,7 +71,7 @@ Scope._histogram = function(data, options) {
 
 	if (show.indexOf("L") > -1) {
 		resetCtx(lCtx);
-		lCtx.fillStyle = "rgba(110, 110, 110, " + alpha + ")";
+		lCtx.fillStyle = "rgba(170, 170, 170, " + alpha + ")";
 		lCtx.globalAlpha = 0.67;
 		lCtx.globalCompositeOperation = "source-over";
 		renderArray(lCtx, l);

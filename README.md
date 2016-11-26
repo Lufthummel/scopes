@@ -4,53 +4,51 @@
 Real-time professional video scopes for modern web browsers.
 
 These scopes are intended as components that can be used by developers
-to implement scope capabilities in their video solutions. The scopes are
-used during color correction and grading stage and provides valuable
-information of what needs to be corrected or adjusted.
+to implement scope capabilities in their video or image solutions. The 
+scopes are used during color correction and grading stage and provides 
+valuable information of what needs to be corrected or adjusted.
 
-The scopes are professional grade using standard BT.601 and BT.709 luma
-conversion, but limited to 8-bit due to browser limitations.
+The scopes are professional grade using standard BT.601 and BT.709 as 
+well as linear luma conversion, but is limited to 8-bit due to browser 
+limitations.
 
-The scope package includes:
+The scope package includes Histogram, Waveform, RGB Parade and Vector scopes.
 
-- Histogram scope (RGB, R, G, B, luma, RGB + luma channels)
-- Waveform (RGB, luma channels)
-- RGB Parade (RGB channels)
-- Vector (HSL projection)
+It is assumed you are familiar with the concepts and usage of video scopes.
 
-It is assumed you are familiar with the concepts of video scopes.
+**GPL2 and commercial licenses available, see below for more details.**
 
 
 Features (alpha/preview)
 --------
 
-- Real-time
-- Accurate
-- BT.601 and BT.709 luma conversion
-- Configurable (size, look etc.)
+- Histogram scope with support for individual R/G/B channels as well as luma and in combinations.
+- Waveform scope with support for R/G/B or luma
+- RGB Parade scope
+- Vector scope for RGB (YUV is not supported at the moment as it's not common in use) using linear projection.
+- Real-time scoping with various quality settings for some scopes
+- Accurate representation.
+- BT.709 (Rec. 709) and BT.601 (Rec. 601) as well as linear luma conversion
+- Configurable
+
+TODO:
+- Luma tracker (useful for time-lapse recordings)
+- Vector scope representing YUV
+
 
 Demo
 ----
 
 **[Online demo can be found here.](http://epistemex.github.io/scopes/test_vid.html)**
 
-We recommend testing in Firefox (see known issues with Chrome below)
-
-
-Known issues
-------------
-
-- Video won't loop properly in Chrome (use Firefox for now).
-- Vector scope does not work with Chrome (use Firefox for now).
-
 
 Dual License
 ------------
 
-For personal non-commercial use a GPLv2 license is provided. The term "personal", as used in this License, refers to non-business use.
-The term "non-commercial", as used in this License, means academic or other scholarly research which (a) is not undertaken for profit,
-or (b) is not intended to produce works, services, or data for commercial use, or (c) is neither conducted, nor funded, by a person or
-an entity engaged in the commercial use, application or exploitation of works similar to the Software.
+For personal non-commercial use a GPLv2 license is provided. The term "personal", as used in this License, refers to 
+non-business use. The term "non-commercial", as used in this License, means academic or other scholarly research which (a) is not 
+undertaken for profit, or (b) is not intended to produce works, services, or data for commercial use, or (c) is neither conducted, 
+nor funded, by a person or an entity engaged in the commercial use, application or exploitation of works similar to the Software.
 
 The Software is available to commercial and business use through a separate license which must be purchased from Epistemex. This
 commercial license allows for closed source use. [Contact us](mailto:github@epistemex.com) for details.
@@ -59,29 +57,31 @@ commercial license allows for closed source use. [Contact us](mailto:github@epis
 Snapshots
 ---------
 
-**See also video on [YouTube](https://www.youtube.com/watch?v=Bjj3DLH-93I)**.
+**Histogram RGB:**
 
-Histogram RGB:
+![Histogram RGB](https://i.imgur.com/nuNJpK5.png)
 
-![Histogram](http://i.imgur.com/Ki9hzuH.png)
+**Histogram luminance:**
 
-Waveform RGB:
+![Histogram Luma](https://i.imgur.com/oW3ah2M.png)
 
-![Waveform RGB](http://i.imgur.com/EJQTS01.png)
+**Waveform RGB:**
 
-Waveform Luma:
+![Waveform RGB](https://i.imgur.com/t5wb9Xy.png)
 
-![Waveform Luma](http://i.imgur.com/ztdyLqa.png)
+**Waveform Luma:**
 
-RGB Parade:
+![Waveform Luma](https://i.imgur.com/Gn4KQTW.png)
 
-![RGB Parade](http://i.imgur.com/Tpcn3pX.png)
+**RGB Parade:**
 
-Vector:
+![RGB Parade](https://i.imgur.com/rveApq5.png)
 
-![Vector](http://i.imgur.com/Nx3AeqT.png)
+**Vector:**
+
+![Vector](https://i.imgur.com/Pl3N8N7.png)
 
 
 *&copy; Epistmex 2015-2016*
  
-![Epistemex](http://i.imgur.com/wZSsyt8.png)
+![Epistemex](http://i.imgur.com/GP6Q3v8.png)

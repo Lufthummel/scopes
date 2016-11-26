@@ -1,8 +1,9 @@
 /*!
-	Scopes Core version 0.1.0 ALPHA
+	Scopes version 0.1.1 ALPHA
+	(c) 2015-2016 epistemex.com
 
-	By Epistemex (c) 2015-2016
-	www.epistemex.com
+	Dual license applies (GPL2 and commercial licenses).
+	See included readme for details.
 */
 
 /**
@@ -13,11 +14,11 @@
  * @param {*} options - options (see below)
  * @param {number} [options.quality=2] - values 1, 2, 4 determines scope quality for some scopes
  * @param {string} [options.scopeType="histogram"] - either "histogram", "waveform", "parade" or "vector"
- * @param {string} [options.lumaType="601"] - either "601", "709" or "linear"
+ * @param {string} [options.lumaType="709"] - either "601", "709" or "linear"
  * @param {boolean} [options.interpolate=false] - interpolate output scope or not
  * @param {string} [options.show="RGB"] - which channels to show. Available channels varies depending on scope-type.
  * @param {boolean} [options.scopeAlpha=false] - use or ignore alpha channel of scope canvas
- * @param {number} [options.intensity=33] - value between 1 and 100. Determines intensity of scope pixels depending on scope-type
+ * @param {number} [options.intensity=16] - value between 1 and 100. Determines intensity of scope pixels depending on scope-type
  * @constructor
  */
 function Scope(source, target, options) {
@@ -28,7 +29,7 @@ function Scope(source, target, options) {
 		quality = options.quality || 2,
 		interpolate = typeof options.interpolate === "boolean" ? options.interpolate : false,
 	   	scopeType = options.scopeType || "histogram",
-		lumaType = options.lumaType || "601",
+		lumaType = options.lumaType || "709",
 		scopeAlpha = typeof options.scopeAlpha === "boolean" ? options.scopeAlpha : false,
 		dOptions = {
 			lumR: null,
@@ -43,7 +44,7 @@ function Scope(source, target, options) {
 			gCtx: null,
 			bCtx: null,
 			lCtx: null,
-			intensity: options.intensity || 33
+			intensity: options.intensity || 16
 		},
 		tw, th,
 		sw, sh,
@@ -133,13 +134,11 @@ function Scope(source, target, options) {
 		dctx.globalAlpha = 1;
 		dctx.clearRect(0, 0, tw, th);
 
-		ctx.webkitImageSmoothingEnabled =
 		ctx.mozImageSmoothingEnabled =
 		ctx.msImageSmoothingEnabled =
 		ctx.oImageSmoothingEnabled =
 		ctx.imageSmoothingEnabled = interpolate;
 
-		dctx.webkitImageSmoothingEnabled =
 		dctx.mozImageSmoothingEnabled =
 		dctx.msImageSmoothingEnabled =
 		dctx.oImageSmoothingEnabled =
@@ -161,14 +160,14 @@ function Scope(source, target, options) {
 	/**
 	 * Intensity value for the scopes. Does not affect the data, only
 	 * the rendering of the data. Value 0 is not a valid value.
-	 * @param {number} [newInt=33] - new value [1, 100]
+	 * @param {number} [newInt] - new value [1, 100]
 	 * @returns {*}
 	 */
 	this.intensity = function(newInt) {
 		if (!arguments.length)
 			return (scopeType === "histogram") ? null : dOptions.intensity;
 
-		if (newInt > 0 && newInt <= 100) dOptions.intensity = newInt * 0.01 * 255;
+		dOptions.intensity = Math.max(0, Math.min(255, newInt)) * 2.55;
 	};
 
 	/**
