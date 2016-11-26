@@ -19,6 +19,12 @@ Scope._vector = function(data, options) {
 		Scope._vector._tmp = tCtx = createTmp(dia);
 	}
 
+	/*
+	todo: there are usually a lot less plots than empty area, so we could
+	change this to only iterate array with actual plots and draw at its
+	position instead of parsing through the complete bitmap. Consider
+	storing coordinates+intensity in array. Check if pre-processing outweighs..
+	 */
 	for(i = 0; i < len; i++) {
 		r = data[i++];
 		g = data[i++];
@@ -31,18 +37,24 @@ Scope._vector = function(data, options) {
 
 	function renderArray(ctx, dCtx, arr) {
 
-		var x, y, p, v,
+		var p, v,
 			idata = ctx.createImageData(dia, dia),
 			data = new Uint32Array(idata.data.buffer);
 
+		for(p = 0; p < data.length; p++) {
+			v = Math.min(255, arr[p] * options.intensity)|0;
+			data[p] = 0xff000000 | v * 0x10101;
+		}
+/*
 		for(y = 0; y < dia; y++) {
 			for(x = 0; x < dia; x++) {
 				p = y * dia + x;
 				v = Math.min(255, arr[p] * options.intensity)|0;
 				//data[p] = (v << 24) | 0x00bbbb77; // BUG in webkit, doesn't pre-multiply the alpha channel for us when context option alpha=false..
-				data[p] = 0xff000000 | v << 16 | v << 8 | v;
+				data[p] = 0xff000000 | v * 0x10101;
 			}
 		}
+*/
 
 		ctx.putImageData(idata, 0, 0);
 
@@ -55,6 +67,7 @@ Scope._vector = function(data, options) {
 		dCtx.drawImage(Scope._graticule, 0, 0);
 	}
 
+	//todo we probably don't need the flexibility of center (x/y). Consider reducing parameters to only rgb + radius.
 	function rgb2xy(r, g, b, x, y, radius) {
 
 		r /= 255;
@@ -92,14 +105,13 @@ Scope._vector = function(data, options) {
 		//function e(t) {return Math.pow(t, 0.47)}
 
 		return {
-			x: (x - sat * Math.sin(hue) + 0.5)|0,
-			y: (y - sat * Math.cos(hue) + 0.5)|0
+			x: (x - sat * Math.sin(hue))|0,
+			y: (y - sat * Math.cos(hue))|0
 		}
 	}
 
 	function createTmp(sz) {
 		var c = document.createElement("canvas"),
-			//ctx = c.getContext("2d"); //, {alpha: false}); BUG in webkit: does not pre-multiply the alpha channel in data-image objects
 			ctx = c.getContext("2d", {alpha: false});
 		c.width = c.height = sz;
 
