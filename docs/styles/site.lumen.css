@@ -7182,14 +7182,14 @@ img.branding-logo {
 .copyright {
   font-size: 90%;
   text-align: center;
-  color: #777;
+  color: #fff;
   width: 100%;
   display: block;
 }
 .jsdoc-message {
   font-size: 90%;
   text-align: center;
-  color: #999;
+  color: #fff;
   width: 100%;
   display: block;
 }
@@ -7202,7 +7202,6 @@ img.branding-logo {
   display: block;
 }
 footer {
-  text-align: center;
   border-top: 1px solid transparent;
   padding-top: 15px;
 }

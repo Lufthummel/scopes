@@ -1,13 +1,14 @@
 /*
 	RGB Parade module version 0.1.0 ALPHA
 
-	By Epistemex (c) 2015-2016
+	By Epistemex (c) 2015-2017
 	www.epistemex.com
 */
 
 Scope._parade = function(data, options) {
 
-	var ctx    = options.lCtx,
+	var
+    ctx    = options.lCtx,
 		w      = options.sWidth,
 		h      = 256, //options.tHeight,
 		r      = new Uint8ClampedArray(256 * w),
@@ -35,7 +36,8 @@ Scope._parade = function(data, options) {
 
 	function renderArray(ctx, r, g, b) {
 
-		var w3 = (w + 1) * 3,
+		var
+      w3 = (w + 1) * 3,
 			idata = ctx.createImageData(w3, 256),
 			data = new Uint32Array(idata.data.buffer),
 			intensity = options.intensity,
@@ -48,7 +50,8 @@ Scope._parade = function(data, options) {
 			py = y * w;
 			pyi = ((h - 1) - y) * w3;
 			for(x = 0; x < w; x++) {
-				var p = py + x,
+				var
+          p = py + x,       // todo move delc. out of loop, cond. check might be faster than min()
 					p2 = pyi + x,
 					rr = Math.min(255, r[p] * intensity) << 24,
 					gg = Math.min(255, g[p] * intensity) << 24,
@@ -61,6 +64,7 @@ Scope._parade = function(data, options) {
 		}
 		ctx.putImageData(idata, 0, 0);
 
+		// todo cache meters
 		ctx.beginPath();
 		drawMeter(((h * 0.25)|0) + 0.5, lw * 0.5);
 		drawMeter((h>>1) + 0.5, lw);

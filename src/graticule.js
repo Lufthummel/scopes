@@ -1,14 +1,15 @@
 /*
 	Graticule for scope version 0.1.0 ALPHA
 
-	By Epistemex (c) 2015-2016
+	By Epistemex (c) 2015-2017
 	www.epistemex.com
 */
 
 Scope._graticule = null;
 Scope._createGraticule = function(radius) {
 
-	var w = radius * 2,
+	var
+    w = radius * 2,
 		canvas = document.createElement("canvas"),
 		ctx = canvas.getContext("2d"),
 		bw = radius * 0.1,

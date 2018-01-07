@@ -1,13 +1,14 @@
 /*
 	Histogram module version 0.1.0 ALPHA
 
-	By Epistemex (c) 2015-2016
+	By Epistemex (c) 2015-2017
 	www.epistemex.com
 */
 
 Scope._histogram = function(data, options) {
 
-	var rCtx = options.rCtx,
+	var
+    rCtx = options.rCtx,
 		gCtx = options.gCtx,
 		bCtx = options.bCtx,
 		lCtx = options.lCtx,

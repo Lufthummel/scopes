@@ -1,12 +1,13 @@
 /*
 	Vector module version 0.1.0 ALPHA
 
-	By Epistemex (c) 2015-2016
+	By Epistemex (c) 2015-2017
 	www.epistemex.com
 */
 Scope._vector = function(data, options) {
 
-	var	dia = Math.min(options.tWidth, options.tHeight)>>1,
+	var
+    dia = Math.min(options.tWidth, options.tHeight)>>1,
 		radius = dia * 0.5,
 		radius2 = (radius * 0.9)|0,
 		ctx = options.rCtx,
@@ -37,12 +38,13 @@ Scope._vector = function(data, options) {
 
 	function renderArray(ctx, dCtx, arr) {
 
-		var p, v,
-			idata = ctx.createImageData(dia, dia),
+		var
+      p, v,
+			idata = ctx.createImageData(dia, dia),    //todo create once and re-use
 			data = new Uint32Array(idata.data.buffer);
 
 		for(p = 0; p < data.length; p++) {
-			v = Math.min(255, arr[p] * options.intensity)|0;
+			v = Math.min(255, arr[p] * options.intensity)|0;  //todo a simple cond. check might be faster than min()
 			data[p] = 0xff000000 | v * 0x10101;
 		}
 /*
@@ -58,7 +60,8 @@ Scope._vector = function(data, options) {
 
 		ctx.putImageData(idata, 0, 0);
 
-		if (!Scope._graticule) Scope._createGraticule(radius<<1);
+		if (!Scope._graticule)
+		  Scope._createGraticule(radius<<1);
 
 		//dctx.setTransform(1,0,0,1,0,0);
 		dCtx.globalCompositeOperation = "source-over";
@@ -74,7 +77,8 @@ Scope._vector = function(data, options) {
 		g /= 255;
 		b /= 255;
 
-		var max = Math.max(r, g, b),
+		var
+      max = Math.max(r, g, b),
 			min = Math.min(r, g, b),
 			dlt = max - min,
 			hue, sat,
@@ -111,7 +115,8 @@ Scope._vector = function(data, options) {
 	}
 
 	function createTmp(sz) {
-		var c = document.createElement("canvas"),
+		var
+      c = document.createElement("canvas"),
 			ctx = c.getContext("2d", {alpha: false});
 		c.width = c.height = sz;
 

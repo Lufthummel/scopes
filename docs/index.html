@@ -38,16 +38,18 @@
 			</li>
 			
 		</ul>
-		<div class="col-sm-3 col-md-3">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
+        
 	</div>
 
 </div>
@@ -86,28 +88,30 @@
     <section class="readme-section">
         <article><h1>﻿Scopes</h1><p>Real-time professional video scopes for modern web browsers.</p>
 <p>These scopes are intended as components that can be used by developers
-to implement scope capabilities in their video solutions. The scopes are
-used during color correction and grading stage and provides valuable
-information of what needs to be corrected or adjusted.</p>
-<p>The scopes are professional grade using standard BT.601 and BT.709 luma
-conversion, but limited to 8-bit due to browser limitations.</p>
-<p>The scope package includes:</p>
-<ul>
-<li>Histogram scope (RGB, R, G, B, luma, RGB + luma channels)</li>
-<li>Waveform (RGB, luma channels)</li>
-<li>RGB Parade (RGB channels)</li>
-<li>Vector (HSL projection)</li>
-</ul>
-<p>It is assumed you are familiar with the concepts of video scopes.</p>
+to implement scope capabilities in their video or image solutions. The 
+scopes are typically used during color correction and grading stage and 
+provides valuable information of what needs to be corrected or adjusted.</p>
+<p>The scopes are professional grade using standard BT.709, BT.2020 and BT.601 
+as well as linear luma conversion, but is limited to 8-bit values due to 
+browser limitations.</p>
+<p>The scope package includes Histogram, Waveform, RGB Parade and Vector scopes.</p>
+<p>It is assumed you are familiar with the concepts and usage of video scopes.</p>
+<p><strong>GPL2 and commercial licenses available, see below for more details.</strong></p>
 <h2>Features (alpha/preview)</h2><ul>
 <li>Histogram scope with support for individual R/G/B channels as well as luma and in combinations.</li>
 <li>Waveform scope with support for R/G/B or luma</li>
 <li>RGB Parade scope</li>
-<li>Vector scope for RGB (HSL color-space, YUV is not supported and is neither common in use).</li>
+<li>Vector scope for RGB (YUV is not supported at the moment as it's not common in use) using linear projection.</li>
 <li>Real-time scoping with various quality settings for some scopes</li>
-<li>Accurate representation. The vector scope uses linear representation.</li>
-<li>BT.709 (Rec. 709) and BT.601 (Rec. 601) as well as linear luma conversion</li>
-<li>Configurable (size, look etc.)</li>
+<li>Accurate representation.</li>
+<li>BT./Rec.709, BT./Rec.2020, BT./Rec.601 as well as linear luma conversion</li>
+<li>Configurable</li>
+</ul>
+<p>Possible future implementations:</p>
+<ul>
+<li>2D Histogram</li>
+<li>Luma tracker (useful for time-lapse recordings)</li>
+<li>Vector scope representing YUV (not commonly used)</li>
 </ul>
 <h2>Demo</h2><p><strong><a href="http://epistemex.github.io/scopes/test_vid.html">Online demo can be found here.</a></strong></p>
 <h2>Dual License</h2><p>For personal non-commercial use a GPLv2 license is provided. The term &quot;personal&quot;, as used in this License, refers to 
@@ -116,19 +120,20 @@ undertaken for profit, or (b) is not intended to produce works, services, or dat
 nor funded, by a person or an entity engaged in the commercial use, application or exploitation of works similar to the Software.</p>
 <p>The Software is available to commercial and business use through a separate license which must be purchased from Epistemex. This
 commercial license allows for closed source use. <a href="mailto:github@epistemex.com">Contact us</a> for details.</p>
-<h2>Snapshots</h2><p><strong>See also video on <a href="https://www.youtube.com/watch?v=Bjj3DLH-93I">YouTube</a></strong>.</p>
-<p>Histogram RGB:</p>
-<p><img src="http://i.imgur.com/Ki9hzuH.png" alt="Histogram"></p>
-<p>Waveform RGB:</p>
-<p><img src="http://i.imgur.com/EJQTS01.png" alt="Waveform RGB"></p>
-<p>Waveform Luma:</p>
-<p><img src="http://i.imgur.com/ztdyLqa.png" alt="Waveform Luma"></p>
-<p>RGB Parade:</p>
-<p><img src="http://i.imgur.com/Tpcn3pX.png" alt="RGB Parade"></p>
-<p>Vector:</p>
-<p><img src="http://i.imgur.com/Nx3AeqT.png" alt="Vector"></p>
-<p><em>&copy; Epistmex 2015-2016</em></p>
-<p><img src="http://i.imgur.com/wZSsyt8.png" alt="Epistemex"></p></article>
+<h2>Snapshots</h2><p><strong>Histogram RGB:</strong></p>
+<p><img src="https://i.imgur.com/nuNJpK5.png" alt="Histogram RGB"></p>
+<p><strong>Histogram luminance:</strong></p>
+<p><img src="https://i.imgur.com/oW3ah2M.png" alt="Histogram Luma"></p>
+<p><strong>Waveform RGB:</strong></p>
+<p><img src="https://i.imgur.com/t5wb9Xy.png" alt="Waveform RGB"></p>
+<p><strong>Waveform Luma:</strong></p>
+<p><img src="https://i.imgur.com/Gn4KQTW.png" alt="Waveform Luma"></p>
+<p><strong>RGB Parade:</strong></p>
+<p><img src="https://i.imgur.com/rveApq5.png" alt="RGB Parade"></p>
+<p><strong>Vector:</strong></p>
+<p><img src="https://i.imgur.com/Pl3N8N7.png" alt="Vector"></p>
+<p><em>&copy; Epistmex 2015-2018</em></p>
+<p><img src="http://i.imgur.com/GP6Q3v8.png" alt="Epistemex"></p></article>
     </section>
 
 
@@ -151,20 +156,22 @@ commercial license allows for closed source use. <a href="mailto:github@episteme
 </div>
 </div>
 
-<div class="modal fade" id="searchResults">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search results</h4>
-      </div>
-      <div class="modal-body"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
 
 <footer>
 
@@ -172,13 +179,13 @@ commercial license allows for closed source use. <a href="mailto:github@episteme
 
 
 	<span class="copyright">
-	Copyright &copy; 2015-2016 Epistemex
+	Copyright &copy; 2015-2017 Epistemex
 	</span>
 
 <span class="jsdoc-message">
-	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a>
 	
-		on Fri Nov 25th 2016
+		on Sat Jan 6th 2018
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
@@ -186,7 +193,9 @@ commercial license allows for closed source use. <a href="mailto:github@episteme
 
 <script src="scripts/docstrap.lib.js"></script>
 <script src="scripts/toc.js"></script>
-<script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
 
 <script>
 $( function () {
@@ -196,7 +205,7 @@ $( function () {
 		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
 	} );
 
-	$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
 		var $this = $( this );
 
 		var example = $this.find( "code" );
@@ -232,8 +241,7 @@ $( function () {
 	} );
 	$( "#toc" ).toc( {
 		anchorName  : function ( i, heading, prefix ) {
-			var id = $( heading ).attr( "id" );
-			return id && id.replace(/\~/g, '-inner-').replace(/\./g, '-static-') || ( prefix + i );
+			return $( heading ).attr( "id" ) || ( prefix + i );
 		},
 		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
 		showAndHide : false,
@@ -259,11 +267,13 @@ $( function () {
 <!--Google Analytics-->
 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		SearcherDisplay.init();
-	});
-</script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
 
 </body>
 </html>

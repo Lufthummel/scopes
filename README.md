@@ -5,12 +5,12 @@ Real-time professional video scopes for modern web browsers.
 
 These scopes are intended as components that can be used by developers
 to implement scope capabilities in their video or image solutions. The 
-scopes are used during color correction and grading stage and provides 
-valuable information of what needs to be corrected or adjusted.
+scopes are typically used during color correction and grading stage and 
+provides valuable information of what needs to be corrected or adjusted.
 
-The scopes are professional grade using standard BT.601 and BT.709 as 
-well as linear luma conversion, but is limited to 8-bit due to browser 
-limitations.
+The scopes are professional grade using standard BT.709, BT.2020 and BT.601 
+as well as linear luma conversion, but is limited to 8-bit values due to 
+browser limitations.
 
 The scope package includes Histogram, Waveform, RGB Parade and Vector scopes.
 
@@ -28,12 +28,13 @@ Features (alpha/preview)
 - Vector scope for RGB (YUV is not supported at the moment as it's not common in use) using linear projection.
 - Real-time scoping with various quality settings for some scopes
 - Accurate representation.
-- BT.709 (Rec. 709) and BT.601 (Rec. 601) as well as linear luma conversion
+- BT./Rec.709, BT./Rec.2020, BT./Rec.601 as well as linear luma conversion
 - Configurable
 
-TODO:
+Possible future implementations:
+- 2D Histogram
 - Luma tracker (useful for time-lapse recordings)
-- Vector scope representing YUV
+- Vector scope representing YUV (not commonly used)
 
 
 Demo
@@ -82,6 +83,6 @@ Snapshots
 ![Vector](https://i.imgur.com/Pl3N8N7.png)
 
 
-*&copy; Epistmex 2015-2016*
+*&copy; Epistmex 2015-2018*
  
 ![Epistemex](http://i.imgur.com/GP6Q3v8.png)
